@@ -1,4 +1,10 @@
-from flask import Blueprint
+from flask import (render_template, url_for, flash, 
+                   redirect, request, abort, Blueprint)
+from coreyblog import db
+from coreyblog.forms import PostForm
+from coreyblog.models import Post
+from flask_login import current_user, login_required
+
 
 # create instance of Blueprint object 
 posts = Blueprint('posts', __name__)
@@ -22,7 +28,7 @@ def new_post():
         # flash message
         flash('Your post has been created', 'success')
 
-        return redirect(url_for('home'))
+        return redirect(url_for('main.home'))
 
     return render_template('create_post.html', title='New Post', form=form, legend='New Post')
 
@@ -52,7 +58,7 @@ def update_post(post_id):
         post.content = form.content.data
         db.session.commit()
         flash('Your post is updated', 'success')
-        return redirect(url_for('post', post_id=post.id))
+        return redirect(url_for('posts.post', post_id=post.id))
 
     elif request.method == 'GET':
         form.title.data = post.title
@@ -70,6 +76,6 @@ def delete_post(post_id):
     db.session.delete(post)
     db.session.commit()
     flash('Your post had been deleted', 'success')
-    return redirect(url_for('home'))
+    return redirect(url_for('main.home'))
 
 

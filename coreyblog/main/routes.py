@@ -1,4 +1,7 @@
-from flask import Blueprint
+from flask import render_template, request, Blueprint
+from coreyblog.models import Post
+
+
 
 # create instance of Blueprint object 
 main = Blueprint('main', __name__)

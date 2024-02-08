@@ -1,4 +1,11 @@
 from flask import Blueprint
+from flask import render_template, url_for, flash, redirect, request
+from coreyblog import db, bcrypt
+from coreyblog.forms import (RegistrationForm, LoginForm,
+                             UpdateAccountForm, RequestResetForm, ResetPasswordForm)
+from coreyblog.models import User, Post
+from flask_login import login_user, current_user, logout_user, login_required
+
 
 # create instance of Blueprint object 
 users = Blueprint('users', __name__)

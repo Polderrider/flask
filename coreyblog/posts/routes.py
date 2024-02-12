@@ -1,7 +1,7 @@
 from flask import (render_template, url_for, flash, 
                    redirect, request, abort, Blueprint)
 from coreyblog import db
-from coreyblog.forms import PostForm
+from coreyblog.posts.forms import PostForm
 from coreyblog.models import Post
 from flask_login import current_user, login_required
 

@@ -1,7 +1,6 @@
 {% extends "layout.html" %}
 
 {% block content %}
-
     <article class="media content-section">
         <img class="rounded-circle article-img" src="{{ url_for('static', filename=post.author.image_file )}}">
         <div class="media-body">
@@ -19,6 +18,7 @@
             <p class="article-content">{{ post.content }}</p>
         </div>
     </article>
+    <!-- Modal -->
     <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
         <div class="modal-dialog">
         <div class="modal-content">
